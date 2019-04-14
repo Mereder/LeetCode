@@ -45,7 +45,8 @@ public class FullBinaryTree {
             // 左不空 右可以空
             if (preNode.right != null) {
                 queue.offer(preNode.right);
-            } else {
+            } // 这个else 包含上边过滤过来的信息  left right都空
+            else {
                 LEAF = true;
             }
         }
