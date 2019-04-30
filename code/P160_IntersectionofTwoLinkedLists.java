@@ -64,6 +64,7 @@ public class P160_IntersectionofTwoLinkedLists {
     public static void main(String[] args) {
         String test = "ABCD";
         System.out.println(test.toLowerCase());
-        Character.isDigit()
+        Character.isDigit('1');
+
     }
 }
