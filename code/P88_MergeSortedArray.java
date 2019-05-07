@@ -23,7 +23,6 @@ public class P88_MergeSortedArray {
         }
         while(j >= 0){
             nums1[tail--] = nums2[j--];
-
         }
     }
 }
