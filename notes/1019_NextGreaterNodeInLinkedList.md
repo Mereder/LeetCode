@@ -87,7 +87,7 @@ Output: [7,9,9,9,0,5,0,0]
 
 借助栈来实现，时间复杂度`O(n)`,空间复杂度`O(n)`。
 
-思路：栈内存放的是 `结点的编号`。 每压入一个编号前，先检查该编号对应元素是否大于栈顶的编号对应元素，、如果大于，则栈顶编号出列，且栈顶编号对应元素的greater为 当前编号对应元素。如果不大于，则继续压栈。
+思路：栈内存放的是 `结点的编号`。 每压入一个编号前，先检查该编号对应元素是否大于栈顶的编号对应的元素，如果大于，则栈顶编号出栈，且栈顶编号对应元素的greater为 当前编号对应元素。如果不大于，则继续压栈。
 
 使用ArrayList方便获取编号和元素的对应关系，且无需固定长度数组。
 
@@ -96,9 +96,12 @@ Output: [7,9,9,9,0,5,0,0]
         ArrayList<Integer> A = new ArrayList<>();
         for (ListNode node = head; node != null; node = node.next)
             A.add(node.val);
+         // 数组默认全是0,。
         int[] res = new int[A.size()];
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < A.size(); ++i) {
+            // A.get(stack.peek()) < A.get(i) 
+            // 下一个值比栈顶小的话入栈,直到遇到比栈顶大的（第一个比栈顶大的）才出栈赋值
             while (!stack.isEmpty() && A.get(stack.peek()) < A.get(i))
                 res[stack.pop()] = A.get(i);
             stack.push(i);
